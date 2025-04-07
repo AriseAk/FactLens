@@ -1,6 +1,6 @@
 {
-    "Clickbait & Curiosity Hooks": [
-        "You won\u2019t believe",
+    "Clickbait": [
+        "You won't believe",
         "This one thing",
         "What happened next",
         "The reason will surprise you",
@@ -14,7 +14,7 @@
         "Exclusive",
         "Guess what"
     ],
-    "Emotionally Charged & Opinion-Based": [
+    "Emotionally Charged": [
         "Hero",
         "Villain",
         "Traitor",
@@ -31,7 +31,7 @@
         "Slammed",
         "Destroyed"
     ],
-    "Manipulative Quantifiers": [
+    "Manipulative": [
         "Massive",
         "Huge",
         "Every",
@@ -47,32 +47,4 @@
         "100% proven",
         "No doubt",
         "Guaranteed"
-    ],
-    "Politically Loaded Terms": [
-        "Woke",
-        "Radical",
-        "Leftist",
-        "Right-wing",
-        "Elite",
-        "Globalist",
-        "Socialist",
-        "Capitalist",
-        "Mainstream media",
-        "Propaganda",
-        "Cancel culture",
-        "Censorship",
-        "Agenda"
-    ],
-    "Pseudo-Scientific or Fake Authority Phrases": [
-        "Scientists say",
-        "Experts confirm",
-        "A study proves",
-        "According to insiders",
-        "Sources reveal",
-        "Leaked documents",
-        "Anonymous official",
-        "Proven by science",
-        "Medical breakthrough",
-        "Ancient secrets"
-    ]
-}
+    ]}

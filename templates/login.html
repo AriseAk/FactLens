@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="login">
+        <div class="header">
+            <img src="/static/assets/logo.png" alt="Logo" class="logo">
+            <h1>FactLens</h1>
+        </div>
+        <form action="/login" method="post">
+            <input type="text" placeholder="Username/Mobile-Number" required name="username">
+            <input type="password" placeholder="Password" required name="password">
+
+            <button type="submit" class="login-btn">Login</button>
+            
+            <div class="links">
+                <a href="/register" class="signup">Sign up</a>
+            </div>
+
+            <div class="divider">OR</div>
+
+            <button class="google" onclick="window.location.href='/client/auth/google'">
+                <img src="/static/assets/ggl.png" alt="Google"> Login with Google
+            </button>
+        </form>
+    </div>
+</body>
+</html>

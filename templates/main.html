@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FactLens</title>
+  <link rel="stylesheet" href="/static/website-searchpage2.css" />
+</head>
+
+<body>
+  <div class="top-bar">
+    <div class="brand">
+      <img
+        src="https://thumbs.dreamstime.com/b/magnifying-glass-planet-earth-continents-glyph-icon-web-search-symbol-126630987.jpg"
+        alt="Description">
+      <span class="logo">FactLens-BOT</span>
+    </div>
+    <button class="logout" onclick="window.location.href='/logout'">Logout</button>
+  </div>
+  <div class="chat-container">
+    <div class="profile-icon">
+      <img
+        src="https://i0.wp.com/fdlc.org/wp-content/uploads/2021/01/157-1578186_user-profile-default-image-png-clipart.png.jpeg?fit=880%2C769&ssl=1"
+        alt="" />
+    </div>
+    <div class="new-chat">
+      <button id="new-chat-button" onclick="window.location.href='/new'">+ New Chat</button>
+    </div>
+    <div class="chat-box" id="chat-box">
+      {% if not documents %}
+      <div class="txt">
+        Hello! How can I help you?
+      </div>
+      {% endif %}
+      {% for doc in documents %}
+      <div class="chat-item user-message">
+        {{ doc.headline }}
+      </div>
+      <div class="chat-item user-message">
+        {{ doc.description }}
+      </div>
+      <div class="chat-item user-message">
+        {{ doc.domain }}
+      </div>
+      <div class="chat-item bot-message">
+        <span class="bot-text">{{ doc.score }}%</span>
+      </div>
+      <div class="chat-time">
+        {{ doc.time.strftime('%Y-%m-%d %I:%M %p') }}
+      </div>
+      {% endfor %}
+    </div>
+    <form action="/home" method="post">
+      <input type="text" placeholder="Enter URL" name="domain" class="ip">
+      <input type="text" placeholder="Enter Headline" name="headline" class="ip">
+      <input type="text" placeholder="Enter Description" name="description" class="ip">
+      <button id="send-button">Send</button>
+    </form>
+  </div> 
+</body>
+
+</html>
