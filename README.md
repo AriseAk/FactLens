@@ -73,13 +73,6 @@ Contributions are welcome! Please follow these steps:
 4. Push to your branch (`git push origin feature-name`).
 5. Open a pull request.
 
-## License
-
-This project is licensed under the MIT License.
-
----
-
-Feel free to modify this README file as needed for your GitHub repository!
 
 Citations:
 [1] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/62103286/203bb870-02af-47ee-a80d-8559ddec6263/paste-1.txt
