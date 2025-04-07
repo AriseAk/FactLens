@@ -2,6 +2,15 @@ import re
 import csv
 import requests
 import numpy as np
+from flask import Flask, redirect, url_for, session, request, jsonify, render_template, flash, send_file
+from dotenv import load_dotenv 
+import os
+
+app = Flask(__name__)
+
+load_dotenv()
+app.secret_key = os.getenv("API_KEY")
+app.cx_id = os.getenv("YOUR_CX_ID")
 
 def keyword_check(content, keys, val):
     counter = [0] * len(keys)
@@ -43,14 +52,57 @@ def extract_features(headline, description, domain):
            ['Disaster', 'Horrific', 'Outrageous', 'Fake'],
            ["Mustshare", "Wake up!", "The truth they don't want you to know"]]
     keyword_scores = keyword_check(content, keys, val)
-    
-    # Domain check
+
     domain_score = dommain_check(domain)
-    
-    # Grammar check
+
     grammar_errors = check_grammar_languagetool(description)
     
-    # Combine features into a single array
     features = np.array(keyword_scores + [domain_score] + [grammar_errors])
     
     return features
+
+
+def fetch_search_results(query):
+    api_key = os.getenv("API_KEY")
+    cx = os.getenv("YOUR_CX_ID")
+    
+    url = "https://www.googleapis.com/customsearch/v1"
+    params = {
+        "key": api_key,
+        "cx": cx,
+        "q": query
+    }
+    
+    response = requests.get(url, params=params)
+    
+    if response.status_code == 200:
+        data=response.json()
+        if data:
+            for item in data.get("items", []):
+                print(item["title"], "-", item["link"])
+        return data
+    else:
+        print("Error:", response.status_code, response.text)
+        return None
+    
+def calculate_search_score(results):
+    if not results or "items" not in results:
+        return 10  
+    count=len(results["items"])
+
+    if count>=5:
+        return 90
+    elif count>=3:
+        return 70
+    elif count>=1:
+        return 40
+    else:
+        return 10
+
+    
+headline = "NASA confirms discovery of new exoplanet"
+results = fetch_search_results(headline)
+score=calculate_search_score(results)
+
+print(results)
+print(score)
